@@ -38,3 +38,7 @@
 | `managerApproved` | boolean | 主管已审批 |
 
 接口统一返回 `ApiResponse`；业务冲突使用 HTTP 409，参数错误使用 400，未认证使用 401，无权限使用 403。
+
+## 考勤核心 API
+
+`POST/GET /core/attendance/periods` 管理员工月度台账，`POST/GET /periods/{id}/entries` 管理幂等考勤流水。`/resolve-exception` 处理异常，`/submit` 提交月结；管理员使用 `/admin/core/attendance/periods/{id}/approve` 与 `/close` 审批并绑定薪资批次。`GET /core/attendance/summary` 返回期间汇总。
