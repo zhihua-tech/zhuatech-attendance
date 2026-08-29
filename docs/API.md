@@ -42,3 +42,5 @@
 ## 考勤核心 API
 
 `POST/GET /core/attendance/periods` 管理员工月度台账，`POST/GET /periods/{id}/entries` 管理幂等考勤流水。`/resolve-exception` 处理异常，`/submit` 提交月结；管理员使用 `/admin/core/attendance/periods/{id}/approve` 与 `/close` 审批并绑定薪资批次。`GET /core/attendance/summary` 返回期间汇总。
+
+`POST/GET /core/attendance/periods/{id}/requests` 管理请假和加班申请，管理员使用 `POST /admin/core/attendance/requests/{id}/review` 批准或驳回；批准后系统自动生成不可重复的假勤流水。
