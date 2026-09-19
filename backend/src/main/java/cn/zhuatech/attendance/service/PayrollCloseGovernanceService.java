@@ -5,8 +5,14 @@ import jakarta.validation.constraints.NotBlank;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class PayrollCloseGovernanceService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result evaluate(Request request) {
         List<String> blockers = new ArrayList<>();
         int reconciliationGap = Math.max(0, request.expectedEmployees() - request.reconciledEmployees());
@@ -21,9 +27,15 @@ public class PayrollCloseGovernanceService {
         return new Result(request.period(), decision, completeness, reconciliationGap,
                 List.copyOf(blockers), blockers.isEmpty());
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String period, @Min(0) int expectedEmployees,
                           @Min(0) int reconciledEmployees, @Min(0) int unresolvedExceptions,
                           @Min(0) int managerApprovalsPending, boolean sourceLocked) {
+        /**
+         * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+         */
         public Request {
             if (period == null || period.isBlank()) throw new IllegalArgumentException("period is required");
             if (expectedEmployees < 0 || reconciledEmployees < 0 || unresolvedExceptions < 0 || managerApprovalsPending < 0)
@@ -31,6 +43,9 @@ public class PayrollCloseGovernanceService {
             if (reconciledEmployees > expectedEmployees) throw new IllegalArgumentException("reconciledEmployees exceeds expectedEmployees");
         }
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String period, String decision, int completenessPercent,
                          int reconciliationGap, List<String> blockers, boolean payrollExportAllowed) {}
 }

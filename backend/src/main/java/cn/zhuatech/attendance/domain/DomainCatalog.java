@@ -2,21 +2,51 @@
 package cn.zhuatech.attendance.domain;
 import org.springframework.stereotype.Component;
 import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Component
 public class DomainCatalog {
     private final Map<String, WorkflowAction> actions = new LinkedHashMap<>();
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public DomainCatalog() {
         actions.put("SUBMIT", new WorkflowAction("SUBMIT", "提交考勤月结", List.of("草稿"), "待复核", "OPERATOR"));
         actions.put("APPROVE", new WorkflowAction("APPROVE", "批准考勤结果", List.of("待复核"), "待结转", "ADMIN"));
         actions.put("CLOSE", new WorkflowAction("CLOSE", "锁定并结转薪资", List.of("待结转"), "已月结", "ADMIN"));
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String systemName() { return "知华科技企业考勤排班管理系统"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String scene() { return "考勤组、班次、排班、打卡、请假、出差、加班、异常、工时、月结与薪资对接"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String initialStatus() { return "草稿"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String partyLabel() { return "员工/部门/考勤组"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String amountLabel() { return "人工成本"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String quantityLabel() { return "出勤工时"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String dueLabel() { return "考勤月结日期"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public List<ModuleDefinition> modules() { return List.of(
             new ModuleDefinition("ATTENDANCE_GROUP", "考勤组", "按法人、地点、部门、岗位配置日历和打卡规则"),
             new ModuleDefinition("SHIFT", "班次规则", "设置弹性、跨天、轮班、休息、迟到和早退规则"),
@@ -28,7 +58,16 @@ public class DomainCatalog {
             new ModuleDefinition("TIMESHEET", "工时核算", "按项目、成本中心和工作日历汇总有效工时"),
             new ModuleDefinition("MONTHLY_CLOSE", "考勤月结", "执行确认、锁定、重开、薪资推送和审计")
         ); }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Map<String, WorkflowAction> actions() { return Collections.unmodifiableMap(actions); }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record ModuleDefinition(String code,String name,String description) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record WorkflowAction(String code,String label,List<String> from,String to,String requiredRole) {}
 }
