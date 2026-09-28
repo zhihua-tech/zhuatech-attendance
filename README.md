@@ -1,5 +1,7 @@
 # ZhuaTech ATTENDANCE｜企业考勤排班管理系统
 
+[简体中文](README.md) | [English](README.en.md)
+
 ## 企业级考勤月结
 
 新增人员覆盖、异常清零、主管审批和源数据锁定控制，月结通过后才允许向薪资系统交接。详见 [考勤月结治理](docs/ENTERPRISE_PAYROLL_CLOSE.md)。
