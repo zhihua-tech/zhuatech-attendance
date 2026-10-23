@@ -1,0 +1,51 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "REVIEW",
+      "lateBeyondGrace": "#7",
+      "earlyBeyondGrace": "#3",
+      "candidateExceptionMinutes": "#7"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "approvedWaiver": "10"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "approvedWaiver": "11"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "lateMinutes": "0",
+      "earlyMinutes": "0",
+      "approvedWaiver": "0"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "lateMinutes": "0",
+      "earlyMinutes": "20",
+      "approvedWaiver": "0"
+    },
+    "expected": {
+      "earlyBeyondGrace": "#15",
+      "candidateExceptionMinutes": "#15"
+    },
+    "error": false
+  }
+]
