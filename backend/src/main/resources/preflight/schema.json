@@ -1,0 +1,80 @@
+{
+  "slug": "attendance",
+  "title": "考勤工时与加班申请预检",
+  "fields": [
+    {
+      "key": "record_no",
+      "label": "记录号",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "employee_no",
+      "label": "工号",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "work_date",
+      "label": "工作日期",
+      "type": "DATE",
+      "length": 200
+    },
+    {
+      "key": "worked_hours",
+      "label": "出勤小时",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2,
+      "max": "24"
+    },
+    {
+      "key": "regular_hours",
+      "label": "标准小时",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2,
+      "max": "24"
+    },
+    {
+      "key": "overtime_hours",
+      "label": "加班小时",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2,
+      "max": "24"
+    }
+  ],
+  "unique": [
+    [
+      "record_no"
+    ],
+    [
+      "employee_no",
+      "work_date"
+    ]
+  ],
+  "rules": [
+    {
+      "op": "SUM_EQ",
+      "args": [
+        "regular_hours",
+        "overtime_hours",
+        "worked_hours"
+      ],
+      "code": "ATTENDANCE_HOURS",
+      "message": "标准加加班小时必须等于出勤小时（按已核定工时输入）",
+      "bad": {
+        "overtime_hours": "3"
+      }
+    }
+  ],
+  "sampleCsv": "record_no,employee_no,work_date,worked_hours,regular_hours,overtime_hours\nATT-001,EMP-01,2026-10-23,10,8,2\n",
+  "limits": {
+    "rows": 500,
+    "bytes": 262144,
+    "columns": 32,
+    "cellCharacters": 4000
+  },
+  "scope": "Read-only batch validation; no persistence, reference-master lookup or full production certification."
+}
